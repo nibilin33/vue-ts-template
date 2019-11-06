@@ -1,0 +1,17 @@
+module.exports = i18n = {
+    'index.sysRunTime': 'System running time: ',
+    'index.runTime': 'Running time: ',
+    'index.varsion': 'Version: ',
+    'index.welcome': 'Welcome to Yealink enterprise management platform',
+    'index.meet': 'Conference Information',
+    'index.setAccount': 'Conference Device Account',
+    'index.real': 'Meeting Room',
+    'index.vmr': 'Virtual Meeting Room',
+    'index.going': 'Ongoing Conference',
+    'index.empSituation': 'Staff Information',
+    'index.addEmp': 'Add ',
+    'index.count': 'Total number',
+    'index.active': 'Activated',
+    'index.dimission': 'Departing',
+    'index.day': 'day(s)',
+};

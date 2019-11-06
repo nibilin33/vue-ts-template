@@ -1,0 +1,11 @@
+ui-libs/element-dev/lib/*
+ui-libs/vant-dev/lib/*
+src/main.ts
+src/router/index.ts
+src/components/tree/*
+server/*
+entry/*
+src/i18n/*
+src/channel/*
+src/views/meeting/platform/pc/meeting-panel/*
+!.eslintrc.js

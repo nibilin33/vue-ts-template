@@ -1,0 +1,11 @@
+{
+   "name": "yltree",
+   "version": "1.0.0",
+   "dependencies": {
+      "classnames": "^2.2.5",
+      "element-class": "^0.2.2",
+      "flattree": "^0.10.0",
+      "is-dom": "^1.0.9",
+      "events": "^1.1.1"
+   }
+}

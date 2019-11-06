@@ -1,0 +1,146 @@
+.yl-transfer-panel {
+    border: 1px solid #ebeef5;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #fff;
+    display: inline-block;
+    vertical-align: middle;
+    width: 270px;
+    padding: 10px;
+    margin-left: 20px;
+    box-sizing: border-box;
+    position: relative;
+    input.is-error:focus,
+    {
+        border-color: #f56c6c;
+    }
+    .email-error {
+        color: #f56c6c;
+        font-size: 12px;
+    }
+    .clusterize-content {
+        outline: none;
+    }
+    input::-webkit-input-placeholder {
+        color: #97a6be;
+        font-size: 14px;
+    }
+    input:-moz-placeholder {
+        color: #97a6be;
+        font-size: 14px;
+    }
+    input::-moz-placeholder {
+        color: #97a6be;
+        font-size: 14px;
+    }
+    input:-ms-input-placeholder {
+        color: #97a6be;
+        font-size: 14px;
+    }
+    input:focus {
+        border: 1px solid #00BE93;
+    }
+    .clusterize-scroll {
+        overflow: auto;
+        max-height: calc(100% - 45px);
+    }
+    .ul-box {
+        // max-height: calc(100% - 45px);
+        ul {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            li {
+                padding: 5px 25px 5px 0;
+                margin: 0;
+                list-style: none;
+                text-align: left;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                position: relative;
+                background-size: 25px 25px;
+                line-height: 15px;
+                .icon {
+                    padding: 8px 0;
+                    float: left;
+                    img {
+                        padding: 0 15px 0 0;
+                        float: left;
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+                .delete {
+                    .el-icon-close {
+                        position: absolute;
+                        left: 1px;
+                        margin-top: 1px;
+                    }
+                    cursor: pointer; // padding-right: 15px;
+                    padding-right:0!important; // border:1px solid #ddd;
+                    border-radius:50%;
+                    // background:#FB4E4E;
+                    right: 10px;
+                    position: absolute;
+                    color:#FB4E4E;
+                    width:18px;
+                    height:18px;
+                    margin-top:-1px;
+                    text-align:center;
+                    display: none
+                }
+            }
+            .STAFF,
+            .STAFF1 {
+                //background: url("img/user.png") no-repeat center;
+                background-size: contain;
+                display: inline-block;
+                border-radius: 25px;
+                height: 25px;
+                width: 25px;
+                background-color: #69C6E5;
+                color: white;
+                text-align: center;
+                overflow: hidden;
+                font-size: 13px;
+                line-height: 25px;
+            }
+            .staff-name {
+                line-height: 26px;
+                vertical-align: top;
+                padding-left: 5px;
+                font-size: 13px;
+            }
+            .STAFF0 {
+                // background: url("img/user0.png") no-repeat center;
+                background-size: contain;
+                display: inline-block;
+                height: 25px;
+                border-radius: 50%;
+                width: 25px;
+                background-color: #EC81A1;
+                color: white;
+                text-align: center;
+                overflow: hidden;
+                font-size: 13px;
+                line-height: 25px;
+            }
+            .STAFF0:after {
+                content: attr(data-name);
+            }
+            .STAFF1:after {
+                content: attr(data-name);
+            }
+            li:hover {
+                background-color: #D3F4F2;
+                .delete {
+                    display: inline-block
+                }
+            }
+        }
+    }
+    .clusterize-no-data {
+        display: none;
+    }
+}
