@@ -1,0 +1,225 @@
+.remote-select {
+    background-color: var(--meeting-room-select);
+}
+.yl-cluster-meeting {
+@mixin empty-size() {
+  max-width: 250px;
+  height: 120px;
+  background-size: cover;
+  margin: 0 auto;
+}
+.meeting-panel__loading{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+  position:absolute;
+}
+.meeting-panel__loading--defined{
+  left:auto;
+  top:auto;
+}
+.no-meeting {
+  @include empty-size();
+}
+.no-data {
+  margin-top: 60px;
+  font-size: 50px;
+  color: #a8a8a8;
+}
+.hide-tr {
+  display: none;
+}
+.table {
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+}
+.checked-back {
+  background: var(--meeting-active);
+}
+.active-hover-color {
+  color: var(--meeting-room-hover);
+}
+.active-hover-td {
+  border-left: 1px dotted var(--meeting-room-hover) !important;
+}
+.active-hover {
+  background: var(--meeting-active);
+}
+.border {
+  border: 1px solid var(--dialog-border);
+}
+
+.time-scale {
+  width: 33px;
+  height: 5px;
+  position: absolute;
+}
+
+.border-dotted-top {
+  border-top: 1px dotted var(--meeting-border);
+}
+.border-dotted-bottom{
+    border-bottom: 1px dotted var(--meeting-border);
+}
+.border-solid-top {
+  border-top: 1px solid var(--meeting-border);
+}
+.border-solid-bottom{
+    border-bottom: 1px solid var(--meeting-border);
+}
+.bg-white {
+  background: white;
+}
+.overflow {
+  overflow: auto;
+}
+.short-point {
+  width: 1px;
+  height: 5px;
+  background: var(--meeting-border);
+  position: absolute;
+}
+.long-point {
+  width: 1px;
+  height: 16px;
+  background: black;
+  position: absolute;
+}
+.allow-drag {
+  outline: none;
+}
+.allow-drag:hover {
+  cursor: cell;
+}
+
+.td {
+  display: table-cell;
+  height: 34px;
+  border-right: 1px dotted var(--meeting-border);
+  width: 34px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.topbar-td {
+  font-weight: bold;
+  display: table-cell;
+  height: 33px;
+  position: relative;
+}
+
+.pd-5 {
+  padding-right: 5px;
+}
+.fixed {
+  table-layout: fixed;
+}
+.room-td {
+  width: 100%;
+  height: 34px;
+  line-height: 34px;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  .td-padding {
+    width: 5px;
+    display: inline-block;
+  }
+  span {
+    font-size: 14px;
+  }
+}
+.tr:hover {
+  // background: #d3f4f2;
+  // background:lightness(var(--color-primary), 1.2);
+  background: var(--meeting-active);
+  //background:alpha(var(--color-primary), 0.2);
+}
+.high-light-time-line {
+  background: var(--color-primary);
+}
+.header-td {
+  display: table-cell;
+  height: 33px;
+  width: 33px;
+  border-top: 1px solid var(--meeting-border);
+  position: relative;
+}
+.meeting-card {
+  border: none;
+  cursor: default;
+  z-index: 8;
+  height: 33px;
+  background: #d2dce4;
+  border-radius: 0;
+  width: 33px;
+  border-left: 1px solid white;
+  position: absolute;
+}
+.time-td {
+  display: table-cell;
+  height: 33px;
+}
+.high-light-check-time-project {
+  background: var(--color-primary) !important;
+  border-right: 1px solid var(--color-primary);
+  border-top: 1px solid var(--color-primary);
+  border-bottom: 1px solid var(--color-primary);
+  .valid {
+    background: orange !important;
+  }
+}
+.scroll-contrl-area-right {
+  width: 10px;
+  position: absolute;
+  top: 0;
+  right: 20px;
+}
+.scroll-contrl-area-left {
+  width: 10px;
+  position: absolute;
+  top: 0;
+}
+.high-light-range-left {
+  border-left: 1px solid var(--color-primary) !important;
+}
+.high-light-range-right {
+  border-right: 1px solid var(--color-primary) !important;
+}
+.tr {
+  width: 100%; //position: relative;
+  line-height: 0;
+  height: 34px;
+  overflow:hidden;
+}
+.icon-Yealink {
+  width: 90%; // height: 80px;
+  margin: 0 auto;
+  padding-right: 5%;
+  .el-select {
+    margin-top: 30px;
+    width: 100%;
+  }
+}
+.mg-top-20 {
+  margin-top: -20px;
+}
+.yl-col-250 {
+  width: 25%;
+  min-width: 300px;
+}
+.yl-col-rest {
+  width: 75%;
+  max-width: calc(100% - 300px);
+}
+}
+.b-popover-tail {
+    position: absolute;
+    width: 10px;
+    margin: 0 50%;
+    z-index: 200;
+}

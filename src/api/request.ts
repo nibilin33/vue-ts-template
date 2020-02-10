@@ -2,8 +2,9 @@ import axios from 'axios';
 import { set } from 'lodash';
 import AxiosAdapter from './adapter';
 
+console.log(process.env.NODE_ENV);
 const CONFIG = {
-    PREFIX: process.env.NODE_ENV === 'development' ? '' : '/ume',
+    PREFIX: process.env.NODE_ENV === 'development' ? '/' : '/ume',
     TIMEOUT: 1000 * 60 * 30,
 };
 
@@ -21,8 +22,6 @@ type CallbackFunction = (config:any) => void;
  * todo:重复提交走事件，可以将这种显隐控制剥离提交流程
  */
 class Axios extends AxiosAdapter {
-  private pedding: any = {}
-
   private prefix: string = ''
 
   private instance: any = axios.create({
@@ -31,20 +30,22 @@ class Axios extends AxiosAdapter {
           'X-Requested-With': 'XMLHttpRequest',
       },
       timeout: CONFIG.TIMEOUT,
+      baseURL: CONFIG.PREFIX,
       transformRequest: [function (data) {
-          return JSON.stringify(data);
+          if (data instanceof Object) data = JSON.stringify(data);
+          return data;
       }],
   })
 
-  constructor(base:string = CONFIG.PREFIX) {
+  constructor(base:string = 'uc/api/v1/manager/') {
       super();
-      this.setPrefix(base);
+      this.prefix = base;
+      this.setbaseURL();
       this.intercepteRequest();
       this.intercepteResponse();
   }
 
-  setPrefix(base:string) {
-      this.prefix = base;
+  setbaseURL(base:string = CONFIG.PREFIX) {
       set(this.instance, 'defaults.baseURL', base);
       return this;
   }
@@ -55,25 +56,27 @@ class Axios extends AxiosAdapter {
   }
 
   post(url:string, data:any) {
-      return this.instance.post(url, { data });
+      return this.instance.post(this.prefix + url, data).then((res:any) => res.data);
   }
 
   get(url:string, data:any) {
-      return this.instance.get(url,
-          { params: data || {} });
+      return this.instance.get(this.prefix + url,
+          { params: data || {} }).then((res:any) => res.data);
   }
 
   delete(url:string, data:any) {
-      return this.instance.delete(url,
-          { params: data || {} });
+      return this.instance.delete(this.prefix + url,
+          { params: data || {} }).then((res:any) => res.data);
   }
 
   put(url:string, data:any) {
-      return this.instance.put(url, { data });
+      return this.instance.put(this.prefix + url, data)
+          .then((res:any) => res.data);
   }
 
   patch(url:string, data:any) {
-      return this.instance.patch(url, { data });
+      return this.instance.patch(this.prefix + url, data)
+          .then((res:any) => res.data);
   }
 
   cancel() {
@@ -91,14 +94,14 @@ class Axios extends AxiosAdapter {
    */
 
   setPedding(url:string, config:customConfig) {
-      this.pedding[this.prefix + url] = config;
+      Axios.pedding[this.prefix + url] = config;
       return this;
   }
 
   intercepteRequest(callback?: CallbackFunction) {
       this.instance.interceptors.request.use((config:any) => {
           if (typeof callback === 'undefined') {
-              Axios.transformRequest(config, this.pedding);
+              Axios.transformRequest(config);
           } else {
               callback(config);
           }
@@ -112,7 +115,7 @@ class Axios extends AxiosAdapter {
   intercepteResponse(callback?: CallbackFunction) {
       this.instance.interceptors.response.use((response:any) => {
           if (typeof callback === 'undefined') {
-              Axios.transformResponse(response, this.pedding);
+              Axios.transformResponse(response);
           } else {
               callback(response);
           }
@@ -124,10 +127,10 @@ class Axios extends AxiosAdapter {
   }
 
   destroy() {
-      Object.keys(this.pedding).forEach((name:string) => {
-          delete this.pedding[name];
+      Object.keys(Axios.pedding).forEach((name:string) => {
+          delete Axios.pedding[name];
       });
-      this.pedding = {};
+      Axios.pedding = {};
   }
 }
 export default Axios;
